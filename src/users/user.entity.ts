@@ -6,8 +6,6 @@ export class User {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
-  // name can be omitted when name is the same as attribute name
-  // @Column({ nullable: false, unique: true })
   @Column({ name: 'email', nullable: false, unique: true })
   email: string;
 
@@ -20,6 +18,6 @@ export class User {
   @Column({ name: 'role', nullable: false, type: 'enum', enum: Role })
   role: Role;
 
-  @Column({ name: 'active', nullable: false, default: true, unique: false })
+  @Column({ name: 'active', nullable: false, unique: false })
   active: boolean;
 }

@@ -1,3 +1,28 @@
 nest new insurance-company
 
 npm i @nestjs/typeorm typeorm pg
+
+git remote add upstream https://github.com/TestMaven2/g-84-insurance-company.git
+
+# Generate module
+nest g module serverMonitor
+nest g module users
+nest g module cars
+nest g module policies
+
+# Generate controller
+nest g controller serverMonitor
+nest g co users
+nest g co cars
+nest g co policies
+
+# Generate service
+nest g service serverMonitor
+nest g s users
+nest g s cars
+nest g s policies
+
+# Generate service
+nest g service serverMonitor
+nest g s users
+nest g s cars

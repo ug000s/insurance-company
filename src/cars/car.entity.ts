@@ -1,9 +1,15 @@
-import { User } from 'src/users/user.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from '../users/user.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('cars')
 export class Car {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
   @Column({ name: 'brand', nullable: false, unique: false })
@@ -17,13 +23,16 @@ export class Car {
 
   @Column({ name: 'vin', nullable: false, unique: true })
   vin: string;
-  
+
   @Column({ name: 'color', nullable: false, unique: false })
   color: string;
 
-  @ManyToOne(() => User, { nullable: false })
+  @ManyToOne((): typeof User => User, { nullable: true })
+  @JoinColumn({
+    name: 'owner_id',
+  })
   owner: User;
 
-  @Column({ name: 'active', nullable: false, default: true, unique: false })
+  @Column({ name: 'active', nullable: false, unique: false })
   active: boolean;
 }
