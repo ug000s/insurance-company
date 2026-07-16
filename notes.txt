@@ -26,3 +26,27 @@ nest g s policies
 nest g service serverMonitor
 nest g s users
 nest g s cars
+
+docker run --name postgres-container \
+ -e POSTGRES_USER=postgres \
+ -e POSTGRES_PASSWORD=qwerty123 \
+ -e POSTGRES_DB=insurance_company \
+ -p 5432:5432 \
+ -v pgdata:/var/lib/postgresql/data \
+ -d postgres
+
+docker exec -it insurance-company-db-1 psql -U postgres -c "CREATE DATABASE g_84_insurance_company;"
+or
+--- connect to container and create database
+docker exec -it insurance-company-db-1 psql -U postgres
+CREATE DATABASE g_84_insurance_company;
+\l -- List databases
+\c mydatabase; -- Connect to new database
+docker run --name my-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=qwerty123 -d postgres -v pgdata:/var/lib/postgresql/data
+
+docker run --name my-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=qwerty123 -d postgres
+
+npm i @nestjs/swagger swagger-ui-express
+
+--- what is schematics?
+npm i @nestjs/schematics
