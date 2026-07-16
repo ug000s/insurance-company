@@ -50,3 +50,6 @@ npm i @nestjs/swagger swagger-ui-express
 
 --- what is schematics?
 npm i @nestjs/schematics
+
+--- validation
+npm i class-validator class-transformer
